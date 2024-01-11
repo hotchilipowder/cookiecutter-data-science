@@ -183,7 +183,7 @@ docker-compose.yml<div class="sd-summary-down docutils">
     <span class="n">command</span><span class="p">:</span> <span class="n">python3</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">8000</span>
     <span class="n">environment</span><span class="p">:</span>
       <span class="n">DB_HOST</span><span class="p">:</span> <span class="p">{{</span> <span class="n">cookiecutter</span><span class="o">.</span><span class="n">project_name</span> <span class="p">}}</span><span class="o">-</span><span class="n">django</span><span class="o">-</span><span class="n">db</span>
-      <span class="n">DB_NAME</span><span class="p">:</span> <span class="p">{{</span> <span class="n">cookiecutter</span><span class="o">.</span><span class="n">project_name</span> <span class="p">}}</span>
+      <span class="n">DB_NAME</span><span class="p">:</span> <span class="p">{{</span> <span class="n">cookiecutter</span><span class="o">.</span><span class="n">db_name</span> <span class="p">}}</span>
       <span class="n">DB_USER</span><span class="p">:</span> <span class="n">admin</span>
       <span class="n">DB_PASSWORD</span><span class="p">:</span> <span class="p">{{</span> <span class="n">cookiecutter</span><span class="o">.</span><span class="n">password</span> <span class="p">}}</span>
     <span class="n">volumes</span><span class="p">:</span>
@@ -207,7 +207,7 @@ docker-compose.yml<div class="sd-summary-down docutils">
       <span class="n">PGUSER</span><span class="p">:</span> <span class="n">admin</span>
       <span class="n">POSTGRES_USER</span><span class="p">:</span> <span class="n">admin</span>
       <span class="n">POSTGRES_PASSWORD</span><span class="p">:</span> <span class="p">{{</span> <span class="n">cookiecutter</span><span class="o">.</span><span class="n">password</span> <span class="p">}}</span>
-      <span class="n">POSTGRES_DB</span><span class="p">:</span> <span class="p">{{</span> <span class="n">cookiecutter</span><span class="o">.</span><span class="n">password</span> <span class="p">}}</span>
+      <span class="n">POSTGRES_DB</span><span class="p">:</span> <span class="p">{{</span> <span class="n">cookiecutter</span><span class="o">.</span><span class="n">db_name</span> <span class="p">}}</span>
     <span class="n">volumes</span><span class="p">:</span>
       <span class="o">-</span> <span class="o">./</span><span class="n">data</span><span class="o">/</span><span class="n">db</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">data</span>
       <span class="o">-</span> <span class="o">./</span><span class="n">datas</span><span class="p">:</span><span class="o">/</span><span class="n">datas</span>
