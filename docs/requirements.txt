@@ -1,0 +1,14 @@
+sphinx
+ipython
+matplotlib
+numpydoc
+
+sphinx-design
+sphinx-copybutton
+sphinx-autobuild
+
+sphinxcontrib-bibtex
+sphinx-comments
+sphinxemoji
+sphinx_rtd_theme
+

@@ -11,8 +11,11 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   getting-started
-   commands
+   get_started/01-introduction
+   get_started/02-installation
+
+   secs/usage
+   secs/release-history
 
 
 

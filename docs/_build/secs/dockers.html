@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dockers &mdash; my DS cookiecutters 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="References" href="references.html" />
+    <link rel="prev" title="Notes" href="notes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            my DS cookiecutters
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="notes.html">Notes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dockers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#docker-compose">Docker-compose</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#playwright-with-django">Playwright with django</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">my DS cookiecutters</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Dockers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/secs/dockers.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dockers">
+<h1>Dockers<a class="headerlink" href="#dockers" title="Permalink to this heading"></a></h1>
+<p>For the current project, we will always include some docker service for our data crawling, management, query, and visualization. Some parts can be well integrated with Python, some will not. So we may include other well-built services like Postgresql or Mongodb for our project.</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>We suppose our project in on the port ranging from 18100-18110.</p>
+<p>Some admin will block the ports for safety.
+We can use <code class="code docutils literal notranslate"><span class="pre">iptables</span></code>to release some ports:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="nv">start_port</span><span class="o">=</span><span class="m">18100</span>
+<span class="nv">end_port</span><span class="o">=</span><span class="m">18120</span>
+<span class="k">for</span><span class="w"> </span><span class="o">((</span><span class="nv">port</span><span class="o">=</span><span class="nv">$start_port</span><span class="p">;</span><span class="w"> </span>port&lt;<span class="o">=</span><span class="nv">$end_port</span><span class="p">;</span><span class="w"> </span>port++<span class="o">))</span>
+<span class="k">do</span>
+<span class="w">    </span>iptables<span class="w"> </span>-A<span class="w"> </span>INPUT<span class="w"> </span>-p<span class="w"> </span>tcp<span class="w"> </span>--dport<span class="w"> </span><span class="nv">$port</span><span class="w"> </span>-j<span class="w"> </span>ACCEPT
+<span class="w">    </span>ip
+</pre></div>
+</div>
+</div>
+<section id="docker-compose">
+<h2>Docker-compose<a class="headerlink" href="#docker-compose" title="Permalink to this heading"></a></h2>
+<section id="playwright-with-django">
+<h3>Playwright with django<a class="headerlink" href="#playwright-with-django" title="Permalink to this heading"></a></h3>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">Docker ports</span><a class="headerlink" href="#id1" title="永久链接至表格"></a></caption>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 18%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Container</p></th>
+<th class="head"><p>ports</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>django-web</p></td>
+<td><p>18100</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>postgres</p></td>
+<td><p>18111</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>redis</p></td>
+<td><p>18112</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Just use <code class="code docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">up</span></code></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Dockerfile<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FROM</span> <span class="n">mcr</span><span class="o">.</span><span class="n">microsoft</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">playwright</span><span class="p">:</span><span class="n">jammy</span>
+<span class="n">RUN</span> <span class="n">apt</span> <span class="n">update</span> <span class="o">-</span><span class="n">y</span>
+<span class="n">RUN</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span> <span class="o">-</span><span class="n">y</span>
+<span class="n">RUN</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">dev</span> <span class="n">libpq</span><span class="o">-</span><span class="n">dev</span> <span class="o">-</span><span class="n">y</span>
+<span class="n">RUN</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">playwright</span>
+<span class="n">RUN</span> <span class="n">playwright</span> <span class="n">install</span>
+<span class="n">RUN</span> <span class="n">playwright</span> <span class="n">install</span><span class="o">-</span><span class="n">deps</span>
+<span class="n">RUN</span> <span class="n">echo</span> <span class="n">y</span> <span class="o">|</span> <span class="n">npx</span> <span class="n">playwright</span> <span class="n">install</span><span class="o">-</span><span class="n">deps</span>
+<span class="n">RUN</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">code</span>
+<span class="n">WORKDIR</span> <span class="o">/</span><span class="n">code</span>
+<span class="n">COPY</span> <span class="o">./</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> <span class="o">/</span><span class="n">code</span>
+<span class="n">RUN</span> <span class="n">pip3</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+docker-compose.yml<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">version</span><span class="p">:</span> <span class="s1">&#39;3&#39;</span>
+
+<span class="n">services</span><span class="p">:</span>
+
+  <span class="p">{{</span> <span class="n">cookiecutter</span><span class="o">.</span><span class="n">project_name</span> <span class="p">}}</span><span class="o">-</span><span class="n">redis</span><span class="p">:</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">redis</span><span class="p">:</span><span class="n">alpine</span>
+    <span class="n">restart</span><span class="p">:</span> <span class="n">always</span>
+    <span class="n">ports</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;18111:6379&quot;</span>
+
+  <span class="p">{{</span> <span class="n">cookiecutter</span><span class="o">.</span><span class="n">project_name</span> <span class="p">}}</span><span class="o">-</span><span class="n">django</span><span class="o">-</span><span class="n">web</span><span class="p">:</span>
+    <span class="n">build</span><span class="p">:</span> <span class="o">.</span>
+    <span class="n">restart</span><span class="p">:</span> <span class="n">always</span>
+    <span class="n">command</span><span class="p">:</span> <span class="n">python3</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">8000</span>
+    <span class="n">environment</span><span class="p">:</span>
+      <span class="n">DB_HOST</span><span class="p">:</span> <span class="p">{{</span> <span class="n">cookiecutter</span><span class="o">.</span><span class="n">project_name</span> <span class="p">}}</span><span class="o">-</span><span class="n">django</span><span class="o">-</span><span class="n">db</span>
+      <span class="n">DB_NAME</span><span class="p">:</span> <span class="p">{{</span> <span class="n">cookiecutter</span><span class="o">.</span><span class="n">project_name</span> <span class="p">}}</span>
+      <span class="n">DB_USER</span><span class="p">:</span> <span class="n">admin</span>
+      <span class="n">DB_PASSWORD</span><span class="p">:</span> <span class="p">{{</span> <span class="n">cookiecutter</span><span class="o">.</span><span class="n">password</span> <span class="p">}}</span>
+    <span class="n">volumes</span><span class="p">:</span>
+      <span class="o">-</span> <span class="o">./</span><span class="n">code</span><span class="p">:</span><span class="o">/</span><span class="n">code</span>
+      <span class="o">-</span> <span class="o">./</span><span class="n">datas</span><span class="p">:</span><span class="o">/</span><span class="n">datas</span>
+    <span class="n">ports</span><span class="p">:</span>
+      <span class="o">-</span> <span class="mi">18100</span><span class="p">:</span><span class="mi">8000</span>
+    <span class="n">depends_on</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">tws</span><span class="o">-</span><span class="n">db</span>
+
+  <span class="p">{{</span> <span class="n">cookiecutter</span><span class="o">.</span><span class="n">project_name</span> <span class="p">}}</span><span class="o">-</span><span class="n">django</span><span class="o">-</span><span class="n">db</span><span class="p">:</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">postgres</span><span class="p">:</span><span class="n">latest</span>
+    <span class="n">restart</span><span class="p">:</span> <span class="n">always</span>
+    <span class="n">command</span><span class="p">:</span> <span class="o">&gt;</span>
+      <span class="o">-</span><span class="n">c</span> <span class="n">max_connections</span><span class="o">=</span><span class="mi">1000</span>
+      <span class="o">-</span><span class="n">c</span> <span class="n">work_mem</span><span class="o">=</span><span class="mi">256</span><span class="n">MB</span>
+      <span class="o">-</span><span class="n">c</span> <span class="n">shared_buffers</span><span class="o">=</span><span class="mi">4</span><span class="n">GB</span>
+    <span class="n">ports</span><span class="p">:</span>
+      <span class="o">-</span> <span class="mi">18112</span><span class="p">:</span><span class="mi">5432</span>
+    <span class="n">environment</span><span class="p">:</span>
+      <span class="n">PGUSER</span><span class="p">:</span> <span class="n">admin</span>
+      <span class="n">POSTGRES_USER</span><span class="p">:</span> <span class="n">admin</span>
+      <span class="n">POSTGRES_PASSWORD</span><span class="p">:</span> <span class="p">{{</span> <span class="n">cookiecutter</span><span class="o">.</span><span class="n">password</span> <span class="p">}}</span>
+      <span class="n">POSTGRES_DB</span><span class="p">:</span> <span class="p">{{</span> <span class="n">cookiecutter</span><span class="o">.</span><span class="n">password</span> <span class="p">}}</span>
+    <span class="n">volumes</span><span class="p">:</span>
+      <span class="o">-</span> <span class="o">./</span><span class="n">data</span><span class="o">/</span><span class="n">db</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="n">data</span>
+      <span class="o">-</span> <span class="o">./</span><span class="n">datas</span><span class="p">:</span><span class="o">/</span><span class="n">datas</span>
+</pre></div>
+</div>
+</div>
+</details></section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="notes.html" class="btn btn-neutral float-left" title="Notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="references.html" class="btn btn-neutral float-right" title="References" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2024, hotchilipowder.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

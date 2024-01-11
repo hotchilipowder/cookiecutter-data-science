@@ -20,3 +20,20 @@ For example:
 
 
 deprecation_warning()
+
+import json
+
+from utils import generate_random_password
+
+password = generate_random_password()
+
+with open('cookiecutter.json') as f:
+    data = json.load(f)
+
+data['password'] = password
+
+with open('cookiecutter.json', 'w') as f:
+    json.dump(data, f, indent=4)
+
+
+
