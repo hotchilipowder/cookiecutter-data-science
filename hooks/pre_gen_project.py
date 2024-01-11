@@ -22,8 +22,14 @@ For example:
 deprecation_warning()
 
 import json
+import random
+import string
 
-from utils import generate_random_password
+
+
+def generate_random_password(length=12):
+    characters = string.ascii_letters + string.digits + string.punctuation
+    return ''.join(random.choice(characters) for i in range(length))
 
 password = generate_random_password()
 
