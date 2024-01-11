@@ -9,3 +9,5 @@ Thanks
 
 * \ `https://github.com/drivendata/cookiecutter-data-science <https://github.com/drivendata/cookiecutter-data-science>`_
 
+* \ `https://github.com/cookiecutter/cookiecutter-django <https://github.com/cookiecutter/cookiecutter-django>`_
+

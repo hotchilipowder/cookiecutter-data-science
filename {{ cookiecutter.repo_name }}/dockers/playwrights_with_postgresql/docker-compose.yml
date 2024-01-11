@@ -14,7 +14,7 @@ services:
     command: python3 manage.py runserver 0.0.0.0:8000
     environment:
       DB_HOST: {{ cookiecutter.project_name }}-django-db
-      DB_NAME: {{ cookiecutter.project_name }}
+      DB_NAME: {{ cookiecutter.db_name }}
       DB_USER: admin
       DB_PASSWORD: {{ cookiecutter.password }}
     volumes:
@@ -38,7 +38,7 @@ services:
       PGUSER: admin
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: {{ cookiecutter.password }}
-      POSTGRES_DB: {{ cookiecutter.password }}
+      POSTGRES_DB: {{ cookiecutter.db_name }}
     volumes:
       - ./data/db:/var/lib/postgresql/data
       - ./datas:/datas
