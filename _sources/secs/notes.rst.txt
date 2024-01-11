@@ -4,12 +4,13 @@ Notes
 =====
 
 
-Introduction
-============
+Why this project
+========================
 
-首先，我是在\ `cookiecutter-data-science <https://drivendata.github.io/cookiecutter-data-science/>`_ 的基础上进行修改，添加一些我个人在日常使用中常见的一些工具配置，例如：dockers，文档配置 等
+First, I have this project based on \ `cookiecutter-data-science <https://drivendata.github.io/cookiecutter-data-science/>`_ .
+I have added some common tools used in my research projects, like :doc:`dockers </secs/dockers>`, \ `sphinx doc <https://hotchilipowder.github.io/my_config/docs/sphinx.html>`_
 
-关于原文(2024-01-09), 我重点记录包括:
+I have following notes for the source prject(2024-01-09):
 
 * Data is immutable: by default, the data folder is included in the \ :code:`.gitignore`\ file 
 
