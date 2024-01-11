@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes &mdash; my DS cookiecutters 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=a1b8b494"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Dockers" href="dockers.html" />
+    <link rel="prev" title="Welcome to my DS cookiecutters&#39;s documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            my DS cookiecutters
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dockers.html">Dockers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">my DS cookiecutters</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Notes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/secs/notes.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="notes">
+<h1>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>首先，我是在<a class="reference external" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter-data-science</a> 的基础上进行修改，添加一些我个人在日常使用中常见的一些工具配置，例如：dockers，文档配置 等</p>
+<p>关于原文(2024-01-09), 我重点记录包括:</p>
+<ul>
+<li><p>Data is immutable: by default, the data folder is included in the <code class="code docutils literal notranslate"><span class="pre">.gitignore</span></code>file</p></li>
+<li><p>Notebooks are for exploration and communication: <code class="code docutils literal notranslate"><span class="pre">&lt;step&gt;-&lt;ghuser&gt;-&lt;description&gt;.ipynb</span></code> (e.g., <code class="code docutils literal notranslate"><span class="pre">0.3-bull-visualize-distributions.ipynb</span></code>)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># OPTIONAL: Load the &quot;autoreload&quot; extension so that code can change</span>
+%load_ext<span class="w"> </span>autoreload
+
+<span class="c1"># OPTIONAL: always reload modules so that as you change code in src, it gets loaded</span>
+%autoreload<span class="w"> </span><span class="m">2</span>
+
+from<span class="w"> </span>src.data<span class="w"> </span>import<span class="w"> </span>make_dataset
+</pre></div>
+</div>
+</li>
+<li><p>Build from the environment up: just use <code class="code docutils literal notranslate"><span class="pre">virtualenv</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>virutalenv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+</li>
+<li><p>Keep secrets and configuration out of version control: just use <code class="code docutils literal notranslate"><span class="pre">.env</span></code>to keep your key and secrets</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">DATABASE_URL</span><span class="o">=</span>postgres://username:password@localhost:5432/dbname
+<span class="nv">AWS_ACCESS_KEY</span><span class="o">=</span>myaccesskey
+<span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>mysecretkey
+<span class="nv">OTHER_VARIABLE</span><span class="o">=</span>something
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/theskumar/python-dotenv">python-dotenv</a> to  load up all the entries in this file as environment variables so they are accessible with os.environ.get</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># src/data/dotenv_example.py</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span><span class="p">,</span> <span class="n">find_dotenv</span>
+
+<span class="c1"># find .env automagically by walking up directories until it&#39;s found</span>
+<span class="n">dotenv_path</span> <span class="o">=</span> <span class="n">find_dotenv</span><span class="p">()</span>
+
+<span class="c1"># load up the entries as environment variables</span>
+<span class="n">load_dotenv</span><span class="p">(</span><span class="n">dotenv_path</span><span class="p">)</span>
+
+<span class="n">database_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DATABASE_URL&quot;</span><span class="p">)</span>
+<span class="n">other_variable</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;OTHER_VARIABLE&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to my DS cookiecutters&#39;s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="dockers.html" class="btn btn-neutral float-right" title="Dockers" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2024, hotchilipowder。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
