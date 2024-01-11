@@ -17,14 +17,8 @@ jobs:
       - name: Install 
         shell: bash
         run: |
-          pip install -r requirements.txt
+          pip install -r docs/requirements.txt
           sphinx-build -b html docs build
-
-      - name: Make snippets to rst
-        shell: bash
-        working-directory: snippets
-        run: |
-          python3 snippets.py
 
       - name: Deploy Website
         uses: peaceiris/actions-gh-pages@v3
